@@ -2,13 +2,12 @@ import os
 import logging
 logging.basicConfig(level=logging.INFO)
 # Make the folder structure
-project_name="ml_project"
+
 dirs=[
     os.path.join("data","raw"),
     os.path.join("data","process"),
-    os.path.join("src",project_name),
-    os.path.join(f"src/{project_name}",'components'),
-    os.path.join(f"src/{project_name}","pipeline"),
+    os.path.join(f"src",'components'),
+    os.path.join(f"src","pipeline"),
     "notebook",
     "models"
 ]
@@ -27,21 +26,22 @@ for dir_ in dirs:
 # Make the files
 
 files=[
-    os.path.join(f"src/{project_name}","__init__.py"),
-    os.path.join(f"src/{project_name}","utils.py"),
+    os.path.join(f"src","__init__.py"),
+    os.path.join(f"src","utils.py"),
 
-    os.path.join(f"src/{project_name}/components","__init__.py"),
-    os.path.join(f"src/{project_name}/components","data_ingestion.py"),
-    os.path.join(f"src/{project_name}/components","data_transformation.py"),
-    os.path.join(f"src/{project_name}/components","model_training.py"),
-    os.path.join(f"src/{project_name}/components","data_monetring.py"),
+    os.path.join(f"src/components","__init__.py"),
+    os.path.join(f"src/components","data_ingestion.py"),
+    os.path.join(f"src/components","data_transformation.py"),
+    os.path.join(f"src/components","model_training.py"),
+    os.path.join(f"src/components","data_monetring.py"),
 
-    os.path.join(f"src/{project_name}/pipeline","__init__.py"),
-    os.path.join(f"src/{project_name}/pipeline","training_pipeline.py"),
-    os.path.join(f"src/{project_name}/pipeline","prediction_pipeline.py"),
+    os.path.join(f"src/pipeline","__init__.py"),
+    os.path.join(f"src/pipeline","training_pipeline.py"),
+    os.path.join(f"src/pipeline","prediction_pipeline.py"),
     "README.md",
     "requirements.txt",
-    ".env"    
+    ".env",   
+    "test_environment.py"
 ]
 
 for file in files:
