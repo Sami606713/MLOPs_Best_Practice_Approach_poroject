@@ -21,7 +21,6 @@ def  inisiate_outliers(train_data_path,test_data_path):
     logging.info("Reading tarin and test data successfull!")
     logging.info(f"shape of train data is {train_data.shape} and shape of test data is {test_data.shape}")
 
-    # Applying Winserization of outliers columns
 
     columns_list=['price','sqft_living','sqft_lot','sqft_basement']
 

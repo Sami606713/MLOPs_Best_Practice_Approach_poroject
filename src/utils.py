@@ -1,4 +1,5 @@
 import pandas as pd
+import pickle as pkl
 import os 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -43,3 +44,10 @@ def winserization(df,col_list):
             df[col]=df[col].clip(lower=lower,upper=upper)
         
     return df[col_list]
+
+def save_file(obj,file_path):
+    """
+    This fun is responsible for saving the pickle file in specific location
+    """
+    with open(file_path,'wb') as f:
+        pkl.dump(obj,f)
