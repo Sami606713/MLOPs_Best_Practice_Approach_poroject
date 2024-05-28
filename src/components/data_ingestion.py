@@ -15,18 +15,23 @@ def inisiate_data_ingestion():
     logging.info("Getting Data")
     df=get_data()
 
+    logging.info("drop uncecessary columns columns are ['waterfront','sqft_above','date','street','statezip']")
+    df=df.drop(columns=['waterfront','sqft_above','date','street','statezip'])
+
     logging.info("Saving the raw data")
     df.to_csv(raw_path,index=False)
-    logging.info(f"Raw data save in this location data/raw")
+    logging.info(f"Raw data save in this location {raw_path}")
 
     logging.info(f"Spliting the data into train and test set")
     train_set,test_set=train_test_split(df,test_size=0.2,random_state=43)
+
+    logging.info(f"shape of train data is {train_set.shape} and {test_set.shape}")
 
     logging.info(f"train data save in this location {train_path}")
     train_set.to_csv(train_path,index=False)
 
     logging.info(f"test data save in this location {test_path}")
-    train_set.to_csv(test_path,index=False)
+    test_set.to_csv(test_path,index=False)
     
     logging.info("Data ingestion Successfull")
     
