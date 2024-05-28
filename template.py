@@ -31,6 +31,7 @@ files=[
 
     os.path.join(f"src/components","__init__.py"),
     os.path.join(f"src/components","data_ingestion.py"),
+    os.path.join(f"src/components","handle_outlier.py"),
     os.path.join(f"src/components","data_transformation.py"),
     os.path.join(f"src/components","model_training.py"),
     os.path.join(f"src/components","data_monetring.py"),

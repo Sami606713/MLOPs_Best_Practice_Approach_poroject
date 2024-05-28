@@ -1,6 +1,7 @@
 from src.utils import get_data
 from sklearn.model_selection import train_test_split
 import os
+import numpy as np
 import logging
 logging.basicConfig(level=logging.INFO)
 
@@ -17,6 +18,11 @@ def inisiate_data_ingestion():
 
     logging.info("drop uncecessary columns columns are ['waterfront','sqft_above','date','street','statezip']")
     df=df.drop(columns=['waterfront','sqft_above','date','street','statezip'])
+
+    logging.info("Replace 0 with np.nan in price col")
+    df['price'].replace(0,np.nan)
+
+    df.dropna(inplace=True)
 
     logging.info("Saving the raw data")
     df.to_csv(raw_path,index=False)
