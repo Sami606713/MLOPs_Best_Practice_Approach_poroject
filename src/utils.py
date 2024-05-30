@@ -1,5 +1,7 @@
 import pandas as pd
 import pickle as pkl
+from sklearn.metrics import r2_score
+from sklearn.model_selection import cross_val_score
 import os 
 import logging
 logging.basicConfig(level=logging.INFO)
@@ -51,3 +53,48 @@ def save_file(obj,file_path):
     """
     with open(file_path,'wb') as f:
         pkl.dump(obj,f)
+
+
+def evulation_matrix(x_train,y_train,x_test,y_test,models):
+    print("Data Found Successfully")
+    full_report={
+        "model":[],
+        "train_score":[],
+        "test_score":[],
+        "train_cv":[],
+        "test_cv":[]
+    }
+
+    report={}
+    for name, model in models.items():
+        
+        model.fit(x_train,y_train)
+        logging.info(f'{model} train')
+
+        logging.info(f"test prediction")
+        test_pre=model.predict(x_test)
+        test_score=r2_score(y_test,test_pre)
+
+        logging.info(f"train prediction")
+        train_pre=model.predict(x_train)
+
+        train_score=r2_score(y_train,train_pre)
+        report[model]=test_score
+
+        # train_cross_validation
+        train_cv_score=cross_val_score(model,x_train,y_train,cv=5).mean()
+
+        # test_cross_validation
+        test_cv_score=cross_val_score(model,x_test,y_test,cv=5).mean()
+
+        # full_report["model"].append(model)
+        # full_report["train_score"].append(train_score)
+        # full_report["test_score"].append(test_score)
+        # full_report["train_cv"].append(train_cv_score)
+        # full_report["test_cv"].append(test_cv_score)
+        
+    # df=pd.DataFrame(full_report)
+    # print(df)
+        
+    return report
+        

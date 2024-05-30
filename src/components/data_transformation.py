@@ -37,7 +37,7 @@ def inisiate_data_transformation(train_process_path,test_process_path):
         # Building Categorical Pipeline
         cat_pipe=Pipeline(steps=[
             ("impute",SimpleImputer(strategy="most_frequent")),
-            ("encode",OneHotEncoder(drop='first',sparse_output=False,handle_unknown='ignore',))
+            ("encode",OneHotEncoder(drop='first',sparse_output=False,handle_unknown='ignore'))
         ])
 
         # Building Transformer
@@ -59,16 +59,17 @@ def inisiate_data_transformation(train_process_path,test_process_path):
             x_test_transform,np.array(y_test)
         ]
 
-        # save the processor
+        # save the processora
         logging.info("saving the processor")
         save_file(obj=process,file_path=pkl_file_path)
         logging.info(f"processor save in this location {pkl_file_path}")
 
+
         return [
             train_array,
-            test_array,pkl_file_path
+            test_array,
+            pkl_file_path
         ]
-
-        
+ 
     except Exception as e:
         raise e

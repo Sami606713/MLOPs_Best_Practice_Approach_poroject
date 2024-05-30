@@ -14,9 +14,10 @@ def  inisiate_outliers(train_data_path,test_data_path):
 
     logging.info("Reading the train data")
     train_data=pd.read_csv(train_data_path)
-
+    
     logging.info('reading test data')
     test_data=pd.read_csv(test_data_path)
+    # print(test_data.isnull().sum())
 
     logging.info("Reading tarin and test data successfull!")
     logging.info(f"shape of train data is {train_data.shape} and shape of test data is {test_data.shape}")
@@ -29,7 +30,7 @@ def  inisiate_outliers(train_data_path,test_data_path):
     logging.info("winserization successfully apply on train data")
 
     logging.info("Applyig winserization on test data")
-    train_data[columns_list]=winserization(test_data,col_list=columns_list)
+    test_data[columns_list]=winserization(test_data,col_list=columns_list)
     logging.info("winserization successfully apply on test data")
 
     logging.info("handle less count value in train data")
@@ -46,7 +47,7 @@ def  inisiate_outliers(train_data_path,test_data_path):
 
     logging.info(f"test data process save in this path {test_process_data_path}")
     test_data_process.to_csv(test_process_data_path,index=False)
-
+ 
     return [
         train_process_data_path,
         test_process_data_path
