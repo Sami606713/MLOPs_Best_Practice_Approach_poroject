@@ -9,7 +9,8 @@ dirs=[
     os.path.join(f"src",'components'),
     os.path.join(f"src","pipeline"),
     "notebook",
-    "models"
+    "models" ,
+    "report"
 ]
 
 for dir_ in dirs:
@@ -26,6 +27,7 @@ for dir_ in dirs:
 # Make the files
 
 files=[
+
     os.path.join(f"src","__init__.py"),
     os.path.join(f"src","utils.py"),
 

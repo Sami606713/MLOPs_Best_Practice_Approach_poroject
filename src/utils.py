@@ -4,6 +4,7 @@ from sklearn.metrics import r2_score
 from sklearn.model_selection import cross_val_score
 import os 
 import logging
+import json
 logging.basicConfig(level=logging.INFO)
 
 # Getting data
@@ -55,18 +56,23 @@ def save_file(obj,file_path):
     with open(file_path,'wb') as f:
         pkl.dump(obj,f)
 
+def save_report(file,file_path):
+    """
+    This fun is responsible for save the full report of models as json format
+    """
+    with open(file_path,"w") as f:
+        json.dump(file,f,indent=4)
 
 def evulation_matrix(x_train,y_train,x_test,y_test,models):
     print("Data Found Successfully")
-    full_report={
-        "model":[],
-        "train_score":[],
-        "test_score":[],
-        "train_cv":[],
-        "test_cv":[]
-    }
 
     report={}
+    full_report={
+        "model_name":[],
+        "score":[],
+        "train_score":[],
+        "test_score":[]
+    }
     for name, model in models.items():
         
         model.fit(x_train,y_train)
@@ -88,14 +94,14 @@ def evulation_matrix(x_train,y_train,x_test,y_test,models):
         # test_cross_validation
         test_cv_score=cross_val_score(model,x_test,y_test,cv=5).mean()
 
-        # full_report["model"].append(model)
-        # full_report["train_score"].append(train_score)
-        # full_report["test_score"].append(test_score)
-        # full_report["train_cv"].append(train_cv_score)
-        # full_report["test_cv"].append(test_cv_score)
+        full_report["model_name"].append(name)
+        full_report['score'].append(test_score)
+        full_report['train_score'].append(train_cv_score)
+        full_report['test_score'].append(test_cv_score)
+
         
-    # df=pd.DataFrame(full_report)
-    # print(df)
-        
-    return report
+    return [
+        report,
+        full_report
+    ]
         
