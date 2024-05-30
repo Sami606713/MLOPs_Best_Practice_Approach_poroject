@@ -15,8 +15,8 @@ def inisiate_model_trainer(train_array,test_array):
         x_train=train_array[:,:-1]
         y_train=train_array[:,-1]
 
-        x_test=train_array[:,:-1]
-        y_test=train_array[:,-1]
+        x_test=test_array[:,:-1]
+        y_test=test_array[:,-1]
         logging.info("Saperate train and test data successfully")
 
         models={

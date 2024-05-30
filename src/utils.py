@@ -25,9 +25,10 @@ def drop_less_count(df,col_list):
         if(col not in df.columns):
             raise f"{col} not in your dataframe"
         else:
-            bedroom_counts=df[col].value_counts()
-            bedroom_index=bedroom_counts[bedroom_counts>=15].index
-            df=df[df[col].isin(bedroom_index)]
+            counts=df[col].value_counts()
+            count_index=counts[counts>=15].index
+            df=df[df[col].isin(count_index)]
+            print(df[col].value_counts())
     return df
 
 
