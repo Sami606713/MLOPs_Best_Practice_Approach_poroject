@@ -11,7 +11,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 def inisiate_model_trainer(train_array,test_array):
-    # try:
+    try:
         # path whre model should be save
         model_path=os.path.join("models","best_model.pkl")
 
@@ -29,7 +29,8 @@ def inisiate_model_trainer(train_array,test_array):
         models={
             "Linear_Regression":LinearRegression(),
             "RandomForest":RandomForestRegressor(),
-            "DecessionTree":DecisionTreeRegressor()
+            "DecessionTree":DecisionTreeRegressor(),
+            "Xgboost":XGBRegressor()
         }
 
         report ,full_report=evulation_matrix(x_train=x_train,y_train=y_train,x_test=x_test,y_test=y_test,models=models)
@@ -47,8 +48,8 @@ def inisiate_model_trainer(train_array,test_array):
         else:
             print("Not Best model found")
 
-    # except Exception as e:
-    #     return e
+    except Exception as e:
+        return e
     
 
     

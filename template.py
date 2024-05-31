@@ -44,7 +44,8 @@ files=[
     "README.md",
     "requirements.txt",
     ".env",   
-    "test_environment.py"
+    "test_environment.py",
+    "app.py"
 ]
 
 for file in files:
