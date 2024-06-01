@@ -45,7 +45,8 @@ files=[
     "requirements.txt",
     ".env",   
     "test_environment.py",
-    "app.py"
+    "app.py",
+    "Dockerfile"
 ]
 
 for file in files:
