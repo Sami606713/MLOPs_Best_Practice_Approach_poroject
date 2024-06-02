@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Root-Folder/house_price/house-price-prediction/mlruns/0/f8045961a922488dbabbaebc3f4c57ae/artifacts
+end_time: 1717312827301
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f8045961a922488dbabbaebc3f4c57ae
+run_name: Lasso
+run_uuid: f8045961a922488dbabbaebc3f4c57ae
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717312821114
+status: 3
+tags: []
+user_id: Laptop House

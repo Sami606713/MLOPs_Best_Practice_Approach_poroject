@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Root-Folder/house_price/house-price-prediction/mlruns/0/8de902c077e64c1f9845919fbeabf5ce/artifacts
+end_time: 1717312889107
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8de902c077e64c1f9845919fbeabf5ce
+run_name: Xgboost
+run_uuid: 8de902c077e64c1f9845919fbeabf5ce
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717312881348
+status: 3
+tags: []
+user_id: Laptop House

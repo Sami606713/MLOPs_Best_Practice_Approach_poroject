@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Root-Folder/house_price/house-price-prediction/mlruns/0/85dd1e53595a4953a1f5ce03a57aeb35/artifacts
+end_time: 1717312438389
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 85dd1e53595a4953a1f5ce03a57aeb35
+run_name: DecessionTree
+run_uuid: 85dd1e53595a4953a1f5ce03a57aeb35
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717312431402
+status: 3
+tags: []
+user_id: Laptop House

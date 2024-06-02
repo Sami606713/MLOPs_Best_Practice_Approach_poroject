@@ -1,0 +1,15 @@
+artifact_uri: file:///E:/Root-Folder/house_price/house-price-prediction/mlruns/0/2ab6406a48434b0794f881eb770f1c8f/artifacts
+end_time: 1717312431378
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2ab6406a48434b0794f881eb770f1c8f
+run_name: RandomForest
+run_uuid: 2ab6406a48434b0794f881eb770f1c8f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1717312404100
+status: 3
+tags: []
+user_id: Laptop House

@@ -1,6 +1,8 @@
 import pandas as pd
 import pickle as pkl
 from sklearn.metrics import r2_score
+import mlflow
+import mlflow.sklearn
 from sklearn.model_selection import cross_val_score
 import os 
 import logging
@@ -74,30 +76,41 @@ def evulation_matrix(x_train,y_train,x_test,y_test,models):
         "test_score":[]
     }
     for name, model in models.items():
-        
-        model.fit(x_train,y_train)
-        logging.info(f'{model} train')
+        with mlflow.start_run(run_name=name):
+            model.fit(x_train,y_train)
+            logging.info(f'{model} train')
 
-        logging.info(f"test prediction")
-        test_pre=model.predict(x_test)
-        test_score=r2_score(y_test,test_pre)
+            logging.info(f"test prediction")
+            test_pre=model.predict(x_test)
+            test_score=r2_score(y_test,test_pre)
 
-        logging.info(f"train prediction")
-        train_pre=model.predict(x_train)
+            logging.info(f"train prediction")
+            train_pre=model.predict(x_train)
 
-        train_score=r2_score(y_train,train_pre)
-        report[model]=test_score
+            train_score=r2_score(y_train,train_pre)
+            report[model]=test_score
 
-        # train_cross_validation
-        train_cv_score=cross_val_score(model,x_train,y_train,cv=5).mean()
+            # train_cross_validation
+            train_cv_score=cross_val_score(model,x_train,y_train,cv=5).mean()
 
-        # test_cross_validation
-        test_cv_score=cross_val_score(model,x_test,y_test,cv=5).mean()
+            # test_cross_validation
+            test_cv_score=cross_val_score(model,x_test,y_test,cv=5).mean()
 
-        full_report["model_name"].append(name)
-        full_report['score'].append(test_score)
-        full_report['train_score'].append(train_cv_score)
-        full_report['test_score'].append(test_cv_score)
+             # Log model parameters (if applicable) and metrics
+            if hasattr(model, 'get_params'):
+                mlflow.log_params(model.get_params())
+            mlflow.log_metric("test_score", test_score)
+            mlflow.log_metric("train_score", train_score)
+            mlflow.log_metric("train_cv_score", train_cv_score)
+            mlflow.log_metric("test_cv_score", test_cv_score)
+
+            # Log the model
+            mlflow.sklearn.log_model(model, "model")
+
+            full_report["model_name"].append(name)
+            full_report['score'].append(test_score)
+            full_report['train_score'].append(train_cv_score)
+            full_report['test_score'].append(test_cv_score)
 
         
     return [

@@ -1,5 +1,5 @@
 from src.components.data_transformation import inisiate_data_transformation
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression,Lasso,Ridge,ElasticNet
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from xgboost import XGBRegressor
@@ -28,7 +28,10 @@ def inisiate_model_trainer(train_array,test_array):
 
         models={
             "Linear_Regression":LinearRegression(),
-            "RandomForest":RandomForestRegressor(),
+            "Ridge":Ridge(alpha=0.09),
+            "Lasso":Lasso(alpha=0.08),
+            "Elistic_Net":ElasticNet(alpha=0.1,l1_ratio=0.7),
+            "RandomForest":RandomForestRegressor(n_estimators=200,max_depth=20,),
             "DecessionTree":DecisionTreeRegressor(),
             "Xgboost":XGBRegressor()
         }
@@ -49,7 +52,7 @@ def inisiate_model_trainer(train_array,test_array):
             print("Not Best model found")
 
     except Exception as e:
-        return e
+        print(e)
     
 
     
