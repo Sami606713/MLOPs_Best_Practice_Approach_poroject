@@ -46,7 +46,8 @@ files=[
     ".env",   
     "test_environment.py",
     "app.py",
-    "Dockerfile"
+    "Dockerfile",
+    ".dockerignore"
 ]
 
 for file in files:
