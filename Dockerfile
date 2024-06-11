@@ -1,10 +1,9 @@
-FROM  python:3.12
-
+FROM python:3.12
 
 WORKDIR /app
 
-COPY . /app/
+COPY . .
 
 RUN pip install -r requirements.txt
 
-CMD [ "streamlit", "run", "app.py" ]
+CMD ["streamlit", "run", "app.py"]
