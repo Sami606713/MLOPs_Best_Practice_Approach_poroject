@@ -30,4 +30,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: sami606713/demo_app:latest
+        tags: sami606713/house_price_mlops:latest
